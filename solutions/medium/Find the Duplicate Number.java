@@ -1,14 +1,20 @@
-// Title: Find the Duplicate Number
-            // Difficulty: Medium
-            // Language: Java
-            // Link: https://leetcode.com/problems/find-the-duplicate-number/
-
-                    nums[i] = nums[correctIndex];
-                    int temp = nums[i];
-                if (nums[i] != nums[correctIndex]) {
-            if (nums[i] != i + 1) {
-            int correctIndex = nums[i] - 1;
-        while (i < nums.length) {
-        int i = 0;
-    public int findDuplicate(int[] nums) {
-class Solution {
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int i = 0;
+        while (i < nums.length) {
+            if (nums[i] != i + 1) {
+                int correctIndex = nums[i] - 1;
+                if (nums[i] != nums[correctIndex]) {
+                    int temp = nums[i];
+                    nums[i] = nums[correctIndex];
+                    nums[correctIndex] = temp;
+                } else {
+                    return nums[i]; // Found duplicate directly
+                }
+            } else {
+                i++;
+            }
+        }
+        return -1;
+    }
+}
